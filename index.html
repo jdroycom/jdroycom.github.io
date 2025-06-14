@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title>JDRoy.com</title>
+  <style>
+
+    :root {
+      --pri: linear-gradient(-135deg, #00489b, #000053);  /*header*/
+      --sec: #002eb9;  /*navbar*/
+      --hvr1:	#00b3ff; /*hover1*/
+      --hvr2: rgb(0, 255, 135); /*hoveralt*/
+      --text: white; /*globaltext*/
+      --btn1: rgb(0, 150, 255); /*contact*/
+      --btn2: rgb(13, 210, 13); /*play*/
+      --bg: rgb(128, 128, 128);   /*mainbodyBG*/
+      --card: darkgrey; /*sectionBG*/
+          }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+
+    }
+    body {
+      font-family: /*Cambria, */Aptos, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+      font-size: 16px;
+    }
+    body.dark-mode {
+      /*background-color: #1f233b;*/
+      background-color: rgb(37, 64, 125);
+      color: #e0e0e0;
+    }
+    header {
+      background: linear-gradient(-135deg, #007BFF, #00489B);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode header {
+      background: var(--pri);
+      /*background-color: #5500ff;*/
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    header h1 {
+      margin: 0;
+      margin-top: 5px !important;
+      font-size: 2em;
+    }
+    .project-nav {
+      background-color: var(--sec);
+      display: flex;
+      justify-content: center;
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4),
+                  0 4px 15px rgba(0, 0, 0, 0.2);
+      gap: 20px;
+      padding: 10px;
+      flex-wrap: wrap;
+      transition: background-color 0.3s;
+    }
+    body.dark-mode .project-nav {
+      background-color: var(--sec);
+    }
+    .project-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .project-nav a.active {
+      background-color: #23cfff7c;
+    }
+    .project-nav a:hover {
+      background-color: var(--hvr1);
+    }
+    body.dark-mode .project-nav a:hover {
+      background-color: var(--hvr1);
+    }
+    nav {
+      background-color: #0056b3;
+      position: sticky;
+      top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      flex-wrap: nowrap;
+      flex: 0 0 auto;
+      overflow-x: auto;
+      direction: ltr;
+      transition: background-color 0.3s;
+    }
+    body.dark-mode nav {
+      background-color: #002d72;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+    nav a:hover {
+      background-color: #004494;
+    }
+    body.dark-mode nav a:hover {
+      background-color: var(--hvr1);
+    }
+    .project-content {
+      display: none;
+    }
+    .project-content.active {
+      display: block;
+    }
+    .section {
+      background: #fff;
+      margin: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+      transition: all 0.3s ease-in-out;
+      scroll-margin-top: 100px;
+    }
+
+    #sec0.section {
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+    body.dark-mode .section {
+      background: rgba(44, 44, 44, 0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    body.dark-mode #sec0.section {
+      background-color: rgba(0, 0, 0, 0.1);
+
+    }
+    .section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      display: block;
+    }
+    .summary {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+      margin: 0 10px;
+    }
+    .summary p {
+      text-align: left;
+      margin: 0;
+      font-size: 0.95em;
+    }
+    .reverse .summary p {
+      text-align: left;
+    }
+
+    .acc {
+      padding-top: 30px;
+      font-weight: bold;
+    }
+
+    .expand-button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      /*text-transform: uppercase;*/
+      align-self: center;
+      width: fit-content;
+    }
+    body.dark-mode .expand-button {
+      background: var(--btn1);
+    }
+    .expand-button:hover {
+      background: #0056b3;
+    }
+    body.dark-mode .expand-button:hover {
+      background: var(--hvr2);
+    }
+    .details-wrapper {
+      display: none;
+    }
+    .section.expanded .details-wrapper {
+      display: block;
+    }
+    .details {
+      margin-top: 10px;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+      transition: color 0.3s;
+    }
+    body.dark-mode .details {
+      color: #e0e0e0;
+    }
+    .details img {
+      width: 75vw;
+      max-width: 100%;
+      min-width: 200px;
+      height: auto;
+      order: 1;
+      margin: 0 auto;
+    }
+    .details p {
+      text-align: justify;
+      font-size: 0.9em;
+      margin: 0;
+      order: 2;
+    }
+
+    .jdrimg {
+      scale: 0.9;
+    }
+
+    .seccol {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 75px;
+      margin: 15px;
+      padding: 15px;
+      text-align: center;
+      background: rgba(44, 44, 44, 0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .horisect {
+      align-items: center; 
+      justify-content: center;
+    }
+
+    .reverse .summary {
+      flex-direction: column;
+    }
+    .reverse .details {
+      flex-direction: column;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 1.2em;
+      margin: 10px 0;
+      padding-bottom: 25px;
+    }
+    .reverse h2 {
+      text-align: center;
+    }
+    .toggle-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #fff;
+      color: #007BFF;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.8em;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode .toggle-button {
+      background: #e0e0e0;
+      color: #003d99;
+    }
+    .toggle-button:hover {
+      background: #e0e0e0;
+    }
+    body.dark-mode .toggle-button:hover {
+      background: #cccccc;
+    }
+
+    .det_of {
+        text-align: left;
+      }
+
+      .subheading {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      .footer-content {
+        display: flex !important; 
+        justify-content: space-between;
+        padding: 0px 290px 35px 290px;
+        align-items: center;
+        background-color: #30303068;
+        color: #ffffff
+      }
+
+    .halfheader {
+        display: block;
+      }
+
+    .l-head, .r-head {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        width: 100%;
+        align-items: center;
+        text-align: justify;
+      }
+    
+    .carousel-container {
+      position: relative;
+      height: 300px;
+      perspective: 1000px;
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 1000px;
+      padding: 0 60px;
+      scale: 0.9;
+    }
+
+    .carousel-item {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      left: 50%;
+      top: 50%;
+      transform-origin: center;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-item:hover {
+      transform: scale(1.05) translateZ(20px);
+    }
+
+    .carousel-nav {
+      /*position: absolute;*/
+      /*top: 50%;*/
+      /*transform: translateY(-50%);*/
+      width: 48px;
+      height: 48px;
+      background: rgba(30, 58, 138, 0.8);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .carousel-nav:hover {
+      background: rgba(46, 255, 137, 0.838); /*var(--amber-500);*/
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-nav.prev, .carousel-nav.next {
+      position: static;
+    }
+
+    .carousel-nav.prev {
+      left: 0;
+    }
+
+    .carousel-nav.next {
+      right: 0;
+    }
+
+
+    input[type="range"] {
+      width: 100px;
+    }
+
+    .nodiv, .nodiv1 {
+      display: flex;
+      flex-direction: column;
+      font-size: large;
+      text-align: left;
+      align-items: center;
+    }
+
+    .nodiv1 {
+      padding-top: 35px;
+    }
+
+    .nodiv1>h4 {
+      text-align: center;
+    }
+
+    h4, h5, .jobtitle {
+      margin: 0;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+    }
+
+    
+      .asterix {
+        /*width: 100vw;*/ 
+        font-style: italic; 
+        opacity: 0.7; 
+        text-align: center; 
+        /*margin-top: -25px;
+        margin-left: -35%;*/
+      }
+
+
+    .jobtitle {
+      width: 230px;
+      background-color: rgba(37, 139, 255, 0.25);
+      text-align: center;
+      padding: 3px 0;
+      border: 1px solid;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .listbreak>li {
+      padding-bottom: 20px;
+      list-style-type: none;
+      white-space: pre-wrap;
+    }
+
+    #spotifyEmbed {
+      /*height: 151px;*/
+      vertical-align: bottom;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    #tracklist {
+      /*margin-top: -20px;*/
+      font-size: 1.2rem;
+      width: 750px;
+      line-height: 1.5rem;
+      word-spacing: 0.01rem;
+    }
+
+    .carousel-item.focused img {
+         border: 3px solid gold;
+         box-shadow: 0 0 20px gold;
+         scale: 1.2;
+    }
+
+    .mailto {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .mailto:hover {
+      color: #ffee00;
+      text-decoration: underline;
+    }
+
+    .contact {
+      background: #007bff9b;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      /*text-transform: uppercase;*/
+      align-self: center;
+      width: fit-content;
+    }
+
+    .contact:hover {
+      background: var(--hvr1);
+    }
+
+    .personalplay {
+      color: white;
+    }
+
+    
+    .playbtn {
+      background-color: var(--btn2); 
+      color: white; 
+      border: none; 
+      padding: 4px 16px; 
+      border-radius: 20px; 
+      cursor: pointer;
+    }
+
+    .playbtn:hover {
+      background-color: var(--hvr2);
+    }
+    
+    .carousel-info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 40rem;
+      margin: 1rem auto;
+      gap: 0.5rem;
+    }
+
+    .carousel-info-row .carousel-nav {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .band-info {
+      flex: 1;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.2;
+      padding: 0;
+      margin: 0;
+    }
+
+    /*Bottom Ticker*/
+    .news-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(45deg, #c41e3a, #8b0000);
+            color: white;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .breaking-label {
+            background-color: #ffffff;
+            color: #c41e3a;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 10px;
+            border-radius: 3px;
+            margin-left: 10px;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .ticker-container {
+            flex: 1;
+            overflow: hidden;
+            height: 100%;
+            position: relative;
+        }
+
+        .ticker-track {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            position: absolute;
+            animation: slide 300s linear infinite;
+        }
+
+        .ticker-item {
+            white-space: nowrap;
+            font-size: 16px;
+            margin-right: 50px;
+        }
+
+        @keyframes slide {
+            from { transform: translateX(50vw); }
+            to { transform: translateX(-100%); }
+        }
+
+        .ticker-separator {
+            color: #ffff00;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+
+        #hiddenTextDesktop {
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease, opacity 0.5s ease;
+          position: absolute;
+          top: 30%;
+          z-index: 1;
+          background: inherit;
+        }
+
+        #hiddenTextDesktop:not(.hidden) {
+          max-height: 1000px; /* or whatever works */
+          opacity: 1;
+        }
+
+        .hidden {
+            /*display: none;*/
+            opacity: 0;
+        }
+
+        .moreinfo {
+          scale: 0.8;
+        }
+
+        
+
+        .show768 {
+            display: none;
+          }
+        
+        .show1100 {
+            display: block;
+          }  
+
+        @media screen and (min-width: 768px) and (max-width: 1130px) {
+          .topcontainer, .btmcontainer {
+            overflow-x: hidden;
+            width: 1131px; 
+            margin: 0 auto;
+          }
+
+          .topcontainer {
+            width: 100%;
+          }
+
+          .btmcontainer {
+            width: 100%;
+          }
+
+          .l-head-mob, .r-head-mob {
+            display: none;
+          } 
+
+          .carousel-container {
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            justify-content: center;
+          }
+
+          #tracklist {
+            width: 750px;
+          }
+
+          .asterix {
+            /*width: 100vw;*/ 
+            font-style: italic; 
+            opacity: 0.7; 
+            /*text-align: center; 
+            margin-top: -25px;
+            margin-left: -50%;*/
+          }
+
+          .l-head-mob, .r-head-mob {
+            display: none;
+          }
+
+          .show1100 {
+            display: none;
+          }
+
+          .show768 {
+            display: block;
+          }
+
+          .footer-content {
+            display: flex; 
+            justify-content: space-between;
+            padding: 0px 90px 35px 90px;
+            align-items: center;
+            background-color: #30303068;
+            color: #ffffff
+          }
+        }
+
+    
+        /* MOBILE STYLES */
+
+    @media (max-width: 767px) {  
+
+      html {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .l-head, .r-head {
+        display: none;
+      }
+
+      .l-head-mob, .r-head-mob {
+            display: block;
+            margin-top: 30px;
+          }
+
+      #hiddenTextMobile {
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease, opacity 0.5s ease;
+          position: absolute;
+          top: 40%;
+          z-index: 1;
+          background: inherit;
+        }
+
+        #hiddenTextMobile:not(.hidden) {
+          max-height: 1000px; /* or whatever works */
+          opacity: 1;
+        }    
+
+        .mobile-hidden {
+          display: none;
+        }
+
+      #sec0 {
+        max-width: 100vw;
+      }
+
+      #tracklist {
+        max-width: 80vw;
+      }
+
+      .nodiv1 {
+        max-width: 100vw;
+      }
+
+      .asterix {
+        /*width: 100vw;*/ 
+        font-style: italic; 
+        opacity: 0.7; 
+        /*text-align: center; 
+        margin-top: -25px;
+        margin-left: -10%;*/
+      }
+
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding: 0;
+      }
+
+
+
+      /*#hiddenText {
+        position: relative; 
+        top: auto;
+      }*/
+
+      /*nav {
+        justify-content: flex-start;
+      }*/
+
+      /*.project-nav a:not(:last-child)::after {
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 0px;
+        background: #ccc;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }*/
+
+      /*.project-nav a::after {
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 0px;
+        background: #ccc;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }*/
+
+
+      /*.project-nav {
+        width: 100vw;
+        text-align: center;
+      }*/
+
+      .project-nav {
+        padding: 5px;
+        gap: 5px;
+      }
+
+      .carousel-container {
+        transform: scale(0.5);
+        padding: 50px 0 0 0;
+        margin: -100px 0 -25px 0;
+        width: 100vw;
+      }
+
+        .carousel-nav {
+          position: absolute;
+          scale: 0.8;
+          margin-top: 250px;
+          display: inline-block;
+          z-index: auto !important;
+          width: 48px;
+          height: 48px;
+          background: rgba(30, 58, 138, 0.8);
+        }
+
+        .carousel-nav.prev,
+        .carousel-nav.next {
+          display: inline-block;
+        }
+
+        .carousel-nav:focus {
+          outline: none;
+          box-shadow: none;
+          transform: none;
+        }
+
+        /*.carousel-info-row {
+          flex-direction: column;
+          align-items: center;
+          max-width: 100%;
+          margin: 1rem auto;
+          gap: 0.5rem;
+        }*/
+
+        .carousel-info-row {
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 0 1rem;
+          text-align: center;
+          margin-top: -75px !important;
+          width: 80vw;
+        }
+
+        /** {
+          outline: red 1px solid;
+        }*/
+
+        /*.carousel-info-row #bandInfo {
+          order: 1;
+        }
+
+        .carousel-info-row .carousel-nav.prev,
+        .carousel-info-row .carousel-nav.next {
+          order: 2;
+          margin: 0 !important;
+        }
+
+        .carousel-info-row .carousel-nav {
+          margin: 0;
+          scale: 0.8
+        }*/
+
+        /*.carousel-info-row > div {
+          flex: none !important;
+          margin: 0 !important;
+        }*/
+
+      /*.carousel-container {
+        text-align: center;
+      }*/
+
+      .carousel-section {
+        padding: 10px;
+      }
+
+      .carousel-info-row {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 1rem;
+        text-align: center;
+      }
+
+      /*.carousel-info-row .carousel-nav.prev,
+      .carousel-info-row .carousel-nav.next {
+        order: initial;
+        margin: 0 !important;
+      }*/
+
+      /*.carousel-info-row #bandInfo {
+        order: initial;
+        flex: 1;
+      }*/
+
+      /*.news-ticker {
+                height: 50px;
+            }
+
+            .breaking-label {
+                font-size: 11px;
+                padding: 6px 10px;
+                letter-spacing: 0.5px;
+            }
+
+            .ticker-item {
+                font-size: 14px;
+                margin-right: 80px;
+            }
+
+            .ticker-items {
+                animation: scroll 20s linear infinite;
+            }
+
+            .ticker-separator {
+                margin: 0 15px;
+            }*/
+    }
+
+   
+    /* Desktop-specific styles */
+    @media (min-width: 768px) {
+      
+      .mobile-break {
+        display: none;
+      }
+
+       .l-head-mob, .r-head-mob {
+            display: none;
+          } 
+
+      
+      .halfheader {
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .l-head {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      text-align: justify;
+    }
+
+    .r-head {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      width: 50%;
+      text-align: left;
+    }
+      
+      header {
+        padding: 20px;
+      }
+      header h1 {
+        font-size: 3em;
+        font-family: 'Lucida Sans', Arial, sans-serif;
+      }
+
+      #sec0 {
+          width: 800px;
+          background:rgba(0, 0, 0, 0.1);
+          font-size: 1.2em;
+        }
+
+
+      .project-nav {
+        padding: 10px 0;
+      }
+      nav {
+        gap: 20px;
+        padding: 10px 0;
+      }
+      nav a {
+        padding: 5px 10px;
+        font-size: 1em;
+      }
+      .section {
+        margin: 20px auto;
+        padding: 20px;
+      }
+      .summary {
+        flex-direction: row;
+        align-items: center;
+        margin: 0 20px;
+        gap: 20px;
+      }
+      .summary p {
+        flex: 1;
+        font-size: 1em;
+      }
+      .expand-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+      .details {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 15px;
+        gap: 20px;
+      }
+      .details p {
+        width: 65%;
+        font-size: 1em;
+        order: 1;
+      }
+      .details img {
+        width: 35%;
+        max-width: 300px;
+        min-width: 150px;
+        height: auto;
+        order: 2;
+        margin: 0;
+      }
+      .reverse .summary {
+        flex-direction: row-reverse;
+      }
+      .reverse .details {
+        flex-direction: row-reverse;
+      }
+      .toggle-button {
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      .reverse {
+        flex-direction: row-reverse;
+      }
+
+      .vc {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      .vid {
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    
+    /* 110px plus-specific styles */
+
+    @media (min-width: 1100px) {
+    .l-head {
+      width: 40%;
+    }
+    .r-head {
+      width: 60%;
+    }
+    }
+
+  </style>
+</head>
+<body class="dark-mode">
+  <div class="topcontainer">
+  <header class="halfheader vc">
+    <div class="l-head">
+      <h1>James-Dean Roy</h1>
+      <p class="subheading">Managing projects • Supporting teams • Delivering results</p>
+      <a class="mailto" href="mailto:jdroy92@outlook.com"><button class="contact">Contact ✉ JDRoy92@outlook.com</button></a>
+      <p class="personalplay">Recent Listens: <a href='https://open.spotify.com/playlist/1tDl46v0jrrDMp7ljATZZj?pi=-DdOGeUMR-CMF' target='_blank'><button class="playbtn">▶ Play</button></a></p>
+    </div>
+    <div class="r-head">
+      <p style="font-size: 1.2em; white-space: pre-wrap;">A project manager and music business professional. 
+Experienced in artist management, events, digital media management, marketing, and project development....<button class="expand-button moreinfo" onclick="toggleInfo()">More Info</button>
+      </p>
+    
+      <div id="hiddenTextDesktop" class="hidden">
+        <p style="text-align: center; font-weight: bold">Widely experienced with an unrivalled work ethic, professionalism, and a can-do attitude</p>
+        <p>I’ve led commercial teams, coordinated projects, and supported international releases. Having worked in a variety of roles across various industries, I can contribute throughout the business. I’m versatile, eager to learn, and happy to help wherever needed</p>
+        <p>I’m committed to having a positive impact not just on projects but internal teams, external partners, and audiences alike</p>
+        <p style="font-weight: bold; text-decoration: underline; margin-bottom: 0;">SKILLS & ABILITIES</p>
+        <p class="show768" style="text-align: left; white-space: pre; margin-top: 0;">• Leading, Managing & Motivating     • Coordinating     <br>• Problem Solving                              • Creative Thinking</p>
+        <p class="show1100" style="text-align: center; margin-top: 0">Leading, Managing & Motivating    |    Coordinating    |    Problem Solving    |    Creative Thinking</p>
+        <p style="font-weight: bold; text-decoration: underline; margin-bottom: 0">DIGITAL TOOLS</p>
+        <p class="show768" style="text-align: left; margin-top: 0">• Microsoft Office & Google Workspace <br>• Canva & DAWs <span style="font-style:italic; font-size: 0.8rem;">(Audacity, FL Studio, DaVinci Resolve)</span></p>
+        <p class="show1100" style="text-align: center; margin-top: 0">Microsoft Office & Google Workspace   |   Canva & DAWs <span style="font-style:italic; font-size: 0.8rem;">(Audacity, FL Studio, DaVinci Resolve)</span></p>
+        <p>I currently seek exciting opportunities and welcome the chance to discuss a range of projects and roles</p>
+        <p style="text-align: center;"><a class="mailto" href="mailto:jdroy92@outlook.com"><button style="background-color: rgb(0, 125, 0);" class="contact">Contact ✉</button></a></p>
+        <p style="text-align: center; font-weight: bold;" class="personalplay">Recent Listens: <a href='https://open.spotify.com/playlist/1tDl46v0jrrDMp7ljATZZj?pi=-DdOGeUMR-CMF' target='_blank'><button class="playbtn" >▶ Play</button></a></p>
+        <p>Current Reads: The Alchemist (Paulo Coelho)</p>
+      </div>
+    </div>
+    <button class="toggle-button" onclick="toggleDarkMode()">Light</button>
+
+    <!-- mobile header -->
+     <div class="l-head-mob">
+      <h1>James-Dean Roy</h1>
+      <p class="subheading">Managing projects • Supporting teams <br class="mobile-break"> • Delivering results</p>
+      <a class="mailto" href="mailto:jdroy92@outlook.com"><button class="contact">Contact ✉ JDRoy92@outlook.com</button></a>
+      <p class="personalplay">Personal Playlist: <a href='https://open.spotify.com/track/1tDl46v0jrrDMp7ljATZZj?si=aacefa042abe4714' target='_blank'><button class="playbtn">▶ Play</button></a></p>
+    </div>
+    <div class="r-head-mob">
+      <p style="font-size: 1.2em;">A project manager and music business professional with progressive experience in Artist Management, Events, Digital Media Management, Marketing, and Development...
+        <button class="expand-button moreinfo" onclick="toggleInfo()">More Info</button>
+      </p>
+    
+      <div id="hiddenTextMobile" class="hidden">
+        <p style="text-align: center; font-weight: bold">Widely experienced with an unrivalled work ethic, professionalism, and a can-do attitude</p>
+        <p>I’ve led commercial teams, coordinated projects, and supported international releases. Having worked in a variety of roles across various industries, I can contribute throughout the business. I’m versatile, eager to learn, and happy to help wherever needed</p>
+        <p>I’m committed to having a positive impact not just on projects but internal teams, external partners, and audiences alike</p>
+        <p style="font-weight: bold; text-decoration: underline">SKILLS & ABILITIES</p>
+        <p class="show768" style="text-align: left; white-space: pre;">• Leading, Managing & Motivating     • Coordinating     <br>• Problem Solving                              • Creative Thinking</p>
+        <p class="show1100" style="text-align: center;">Leading, Managing & Motivating    |    Coordinating<span class="mobile-hidden">    |    </span><br class="mobile-break">Problem Solving    |    Creative Thinking</p>
+        <p style="font-weight: bold; text-decoration: underline">DIGITAL TOOLS</p>
+        <p class="show768" style="text-align: left;">• Microsoft Office & Google Workspace <br>• Canva & DAWs <span style="font-style:italic; font-size: 0.8rem;">(Audacity, FL Studio, DaVinci Resolve)</span></p>
+        <p class="show1100" style="text-align: center;">Microsoft Office & Google Workspace<span class="mobile-hidden">   |   </span><br class="mobile-break">Canva & DAWs <span style="font-style:italic; font-size: 0.8rem;">(Audacity, FL Studio, DaVinci Resolve)</span></p>
+        <p>I currently seek exciting opportunities and welcome the chance to discuss a range of projects and roles</p>
+        <p style="text-align: center;"><a class="mailto" href="mailto:jdroy92@outlook.com"><button style="background-color: rgb(0, 125, 0);" class="contact">Contact ✉</button></a></p>
+        <p style="text-align: center; font-weight: bold;" class="personalplay">Recent Listens: <a href='https://open.spotify.com/track/1tDl46v0jrrDMp7ljATZZj?si=aacefa042abe4714' target='_blank'><button class="playbtn">▶ Play</button></a></p>
+        <p>Current Reads: The Alchemist (Paulo Coelho)</p>
+      </div>
+    </div>
+    <button class="toggle-button" onclick="toggleDarkMode()">Light</button>
+  </header>
+  </div>
+  <div class="project-nav">
+    <a href="#" onclick="event.preventDefault(); showProject('project0')" class="active">Current Employment</a>
+    <a href="#" onclick="event.preventDefault(); showProject('project1')">Education</a>
+    <a href="#" onclick="event.preventDefault(); showProject('project2')">Previous Employment</a>
+  </div>
+
+  <div class="btmcontainer">
+  <!--PROJECT ZERO-->
+<div id="project0" class="project-content active">
+      <div class="nodiv1">
+        <h4>Northern Music Company <br><span style="font-style:italic; font-weight: lighter; font-size: 1rem;">(Oct 2023 - Present)</span></h4>
+        <p style="text-align: center;">Artist Management & Business Support<br>
+        <span style="font-style:italic; font-size: 0.9rem;">Ongoing | Remote | Part-time</span></p>
+      </div>
+  <div class="section" id="sec0">
+      <div class="summary" style="font-size: 1.1rem;">
+        <p>What began as a student placement evolved into a freelance role where I’ve become a trusted contributor across campaigns, operations, and logistics. While my work sits on the outside of a formal role, I help, support, add structure, streamline processes, increase efficiency, and step up to lead where needed - working on a range of projects across a roster of international heavy rock and metal artists.</p>
+      </div>
+        <div class="det_of" style="font-size: 1.1rem;">
+          <br>
+          <p style="font-weight: bold; text-decoration: underline; font-size: 1.2rem;"> Responsibilities Include:</p>
+          <ul class="listbreak">
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Campaign and Project Management</span>
+Managing rollout documents, timelines and schedules, coordinating across stakeholders</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Support Senior Management</span>
+Delivering, supporting, and reporting, ensuring consistency, clear communication, and momentum across a range of projects</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Cross-Team Liaison</span>
+Coordinating actions, securing assets and problem solving across distributors, labels, PR teams, artists, suppliers, and collaborators</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Create and Develop Working Documents</span>
+Support planning and data-led decision-making through trackers, timelines, schedules and campaign reports</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Platform Oversight</span>
+Manage and leverage DSPs and platforms such as Spotify, YouTube and BandsInTown</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Content Review and Quality-Check</span>
+Ensure accuracy and support final sign-off for campaign materials, press releases, bios, lyric sheets, and artwork</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Mailing list Strategy</span>
+Planning and delivering targeted mailing list and presale activities to drive early interest, reward loyal fans, and grow audiences across the roster</li>
+            <li><span style="font-weight: bold; text-decoration: underline; font-size: 1.1rem;">Content & Asset Support</span>
+Independently and collaboratively design, edit and deliver artwork, assets and content</li>
+          </ul>
+          <P style="font-weight: bold; margin-bottom: 0.5rem;">How I Work:</P>
+          <p style="white-space: pre-wrap; margin-top: 0.5rem">The role isn’t always about controlling the situation, but supporting the team, tracking activity, and creating the right conditions for projects to be successful and delivered on schedule. 
+            
+Beyond project coordination and reporting, I develop templates, checklists, and frameworks to streamline work, improve efficiency, and leave something behind that makes the next project stronger than the last.</p>
+        </div>
+      
+    </div>
+<div>
+      <div class="carousel-section">
+  <div class="carousel-container">
+    
+    <div id="bandCarousel"></div>
+    
+  </div>
+
+  <div class="carousel-info-row" style="display: flex; align-items: center; justify-content: center; max-width: 48rem; margin: 2rem auto;">
+    <button style="margin: 0 0 0 100px;" class="carousel-nav prev" onclick="goToPrevious()" aria-label="Previous">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+
+  <div id="bandInfo" style="flex: 1; text-align: center;"></div>
+
+    <button style="margin: 0 100px 0 0;" class="carousel-nav next" onclick="goToNext()" aria-label="Next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+</div>
+
+
+  <div id="spotifyEmbed" style="margin: 0.2rem auto; max-width: 48rem;"></div>
+
+  <div class="nodiv">
+    <ul id="tracklist">
+      <!-- Tracklist items will be populated here -->
+    </ul>
+  </div>
+  
+    </div>
+    </div>
+    <div class="section" id="sec1">
+      <h2>Additional Campaign Contributions</h2>
+      <div style="text-align:center; font-size: 1.2rem;"> 
+      <p class="acc">Devin Townsend - ‘PowerNerd’</p>
+      <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/album/2UfPWyvEAbQmQR6s6ob7tX?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <p class="acc">White Stones - ‘Memoria Viva’</p>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3Ybli3DLqkR2lfHccqOpqY?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <p class="acc">Paradise Lost - ‘Icon 30’</p>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3pr4hQdl7fbVNb5ZXO6RaI?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="section reverse hidden" id="sec2">
+      <h2>BOTTOM SECTION</h2>
+      <br>
+      <div class="summary">
+        <p>textwaf</p>
+        <button class="expand-button" onclick="toggleSection(this)">+ READ MORE</button>
+      </div>
+      <div class="details-wrapper">
+        <div class="details vc">
+          <img src="Image-1.gif" alt="alt2">
+          <p>textwaf</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+  <!--PROJECT ONE-->
+
+  <div id="project1" class="project-content">
+    <div class="section" id="sec0">
+      <p><span style="font-weight: bold;">BA (Hons) Music Business Degree</span><span style="font-style:italic; font-weight: lighter;"> (with Placement)</span>
+<br>
+University of Gloucestershire
+<br>
+Graduate: 2025</p>
+      <p>A practical degree focused on artist and product development, innovation, marketing, and sustainability. The course provided strong academic grounding in key areas such as project management, research, and strategic planning. Alongside this, I independently sourced and completed a placement year at Northern Music Company, which allowed me to apply and extend my learning in a real-world industry setting. This has since developed into an ongoing freelance position.</p>
+    </div>
+      <h4 style="font-size: 2rem; text-align: center;">Key Experiences</h4>
+    <div class="section" id="sec1">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Post-Brexit EU Touring Policy Impact Analysis</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Dissertation Project)</span></p>
+      <p style="white-space: pre-wrap;">Developed an independent major research project assessing the impact of post-Brexit visa, permit, and carnet requirements on independent UK artists touring in the EU. 
+        
+Conducted in-depth contextual analysis of policy documents, industry surveys, and academic texts including reports from UK Music, MU, ISM, and the APPG.
+
+Synthesised qualitative and quantitative data from reports and case studies to evaluate financial, administrative, and logistical barriers.
+
+Investigated how these changes have affected access to EU markets and disrupted a key development pathway.</p>
+    </div>
+    <div class="section" id="sec2">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Cheltenham Jazz Festival</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Stage Assistant)</span></p>
+      <p>Worked directly with the Big Top stage manager, supporting the coordination of artist arrivals and stage changeovers</p>
+    </div>
+    <div class="section" id="sec3">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">The Music Economy of Gloucestershire</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Industry Report)</span></p>
+      <p style="white-space: pre-wrap;">Co-authored the MEG industry report by providing festival data and written analysis of artist line-ups at Cheltenham Jazz Festival and 2000 Trees (2017–2024)
+</p>
+<section style="display: flex; flex-direction: column; align-items: center;"><a class="mailto" href="https://heyzine.com/flip-book/c2e6bc4e6a.html">https://heyzine.com/flip-book/c2e6bc4e6a.html</a>
+<img class="jdrimg" style="display: block; margin: 0 auto;" src="https://i.postimg.cc/tR1bv8sV/Image-00.gif" alt="missing image"></section>
+    </div>
+    <div class="section" id="sec4">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Black Deer Festival 2022</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Main Stage Artist Liaison)</span></p>
+      <p style="white-space: pre-wrap;">Acted as the main point of contact for artists and their management on the Main Stage. 
+        
+Escorted acts, confirmed set lists and show-stop agreements, and supported backstage operations.</p>
+    </div>
+    <div class="section" id="sec5">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Artist Management & Development Assistant</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Module Project)</span></p>
+      <p style="white-space: pre-wrap;">Supported the development of a final-year student’s music project from demo to final mix, offering A&R input across lyrics, arrangement, and marketing.
+
+Feedback praised the genuine connection made with the artist and the meaningful impact my contributions had on the project.</p>
+    </div>
+    <section class="seccol">
+    <div class="horisect" id="sec6">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">“Zine the Scene”</span><br><span style="font-style:italic; font-weight: lighter; font-size: 0.9rem; text-decoration: none !important;"> (New Music Enterprise Module)</span></p>
+      <p style="white-space: pre-wrap;">Project managed the creation of a digital guide documenting Cheltenham’s live music venues
+
+<img class="jdrimg" style="display: block; margin: 0 auto;" src="https://1drv.ms/i/c/a78c5b214e1a25ea/IQREHoB3ZGaTTbLo0-5aY_gpAf4lYiUi-E860kK4QswgEPI?width=364&height=500" alt="Zine image"></p>
+    </div>
+    <div class="horisect" id="sec7">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Mindsong “Sing to Remember” Project</span><br><span style="font-style:italic; font-weight: lighter; font-size: 0.9rem; text-decoration: none !important;"> (Module Project)</span></p>
+      <p style="white-space: pre-wrap;">Curated a package of contemporary songs for use in Mindsong’s Dementia therapy sessions
+
+<img class="jdrimg" style="display: block; margin: 0 auto;" src="https://1drv.ms/i/c/a78c5b214e1a25ea/IQRuCQS05wGUSbPr1D63gYuMATSf1wPq6S-vUEv_i4LUhBA?width=364&height=500" alt="Mindsong image"></p>
+    </div>
+    </section>
+   </div>
+
+  <!-- PROJECT TWO -->
+
+  <div id="project2" class="project-content">
+    
+    <div class="section" id="sec1">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Career Coach – University of Gloucestershire</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Sep 2022 – Oct 2023)</span></p>
+      <p style="white-space: pre-wrap;">Delivered 1:1 mentoring to students as they explored career paths, sourced industry experience, and prepared to enter employment.
+
+Led in-lecture presentations and supported sessions on topics such as creative CVs, mock interviews, and professional mindset.
+
+Co-created resource packs designed to support students across the university with job searches, CV writing, application prep, and interviews.
+
+Promoted the service across all four Cheltenham and Gloucester campuses, liaising with Heads of School and business partners to increase visibility and engagement.</p>
+    </div>
+    <div class="section" id="sec2">
+      <p style="font-weight: bold; white-space: pre-wrap; font-size: 1.1rem;"><span style="text-decoration: underline;">Front of House:<span style="font-weight: normal;"> Cheltenham</span><span class="mobile-hidden">   |   </span><br class="mobile-break">Duty Manager: <span style="font-weight: normal; font-size: 1rem; text-decoration: none !important;"> Wrexham</span>
+Premier Inn (Whitbread)</span> <span style="font-style:italic; font-weight: lighter;">(May 2021 – Oct 2023)</span></p>
+      <p style="white-space: pre-wrap;">Completed full Duty Manager training after early promotion from Nights Receptionist.
+
+Delivered a consistent level of service and maintained brand standards.
+
+Provided consistent weekend and peak-period support alongside university studies.</p>
+    </div>
+    <div class="section" id="sec3">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Bar Manager – Great Northern Group</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Aug 2018 – Sep 2020)</span></p>
+      <p style="white-space: pre-wrap;">Managed and coordinated up to 10 bar, restaurant and function staff.
+
+Ensured our well-rounded product of high-quality food and drinks, atmosphere, and service were consistently achieved.
+
+Responsibilities included daily reporting, takings, stock management, and general cellar and building maintenance and repairs.
+
+Introduced tailored 1:1 staff coaching to improve service speed, team confidence, and consistency, praised by both senior management and staff.
+
+Curated a new music strategy to enhance the atmosphere and drive sales.
+
+*Awarded TripAdvisor's Travellers' Choice Award for 2020, entering the top 10% of restaurants around the world for feedback.</p>
+    </div>
+    <div class="section" id="sec4">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Business Development Executive – The Barcode Warehouse</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Jun 2018 – Aug 2018)</span></p>
+      <p style="white-space: pre-wrap;">Established and built relationships with clients and suppliers.
+
+Communicated via phone, email, and in-person meetings in a fast-paced environment.
+
+Generated and followed up on leads across barcoding, EPOS, label/receipt hardware and software solutions.</p>
+    </div>
+    <div class="section" id="sec5">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">SME Account Manager – Vodafone</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;">  (Jun 2016 – Aug 2018)</span></p>
+      <p style="white-space: pre-wrap;">Direct point of contact for premium SME clients, managing accounts with 9 to 250 connections — from sole traders and small businesses to international corporations and embassies
+
+Handled upgrades, billing and usage queries, orders, network and device issues, and disputes, as well as initiating and supporting account renewals
+
+Took ownership of customer issues, acting as an advocate for assigned accounts and supporting department escalations
+
+Provided floor support and assisted with onboarding new recruits
+
+<span style="font-style: italic;">Going above and beyond was at the heart of what we did</span></p>
+    </div>
+    <div class="section" id="sec6">
+      <p style="font-weight: bold; font-size: 1.1rem;"><span style="text-decoration: underline;">Senior Attendant – Reeves Leisure Ltd</span><span style="font-style:italic; font-weight: lighter; font-size: 1rem; text-decoration: none !important;"> (Mar 2009 – Nov 2015)</span></p>
+      <p style="white-space: pre-wrap;">Deputised for the owner across subcontracted grounds, overseeing ride operations, staff, and public safety.
+
+Led staff training and completed daily ride checks, urgent maintenance, and health and safety documentation.
+
+Managed park-wide atmosphere via music systems to enhance customer experience and increase engagement.
+
+Worked solo in Galway, launching a new ride for the company as part of a Winter Wonderland event.</p>
+    </div>
+    <div class="section hidden" id="sec7">
+      <p style="font-weight: bold;">boldtext<span style="font-style:italic; font-weight: lighter;">italicized</span></p>
+      <p>
+        content
+      </p>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="hidden news-ticker">
+        <div class="breaking-label">Did You Know?</div>
+        <div class="ticker-container">
+            <div class="ticker-track">
+                <div class="ticker-item">
+                    <span class="ticker-separator">●</span>
+                    <span class="ticker-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                    <span class="ticker-separator">●</span>
+                    <span class="ticker-item">Donec venenatis erat quis ultricies finibus</span>
+                    <span class="ticker-separator">●</span>
+                    <span class="ticker-item">In eget dictum mauris, sit amet porttitor libero</span>
+                    <span class="ticker-separator">●</span>
+                    <span class="ticker-item">Fusce scelerisque condimentum orci at rutrum</span>
+                    <span class="ticker-separator">●</span>
+                    <span class="ticker-item">Donec interdum mi ut lorem aliquam, a fringilla libero bibendum</span>
+                </div>
+            </div>
+        </div>
+    </div>
+  <footer>
+    <div class="footer-content">
+      <!--<img style="scale: 0.8;" src="https://i.ibb.co/ZRsBxSXb/3-OWe3-logo-small-light.png" alt="3OMlogo">-->
+      <p>Get in Touch: <a href='jdroy92@outlook.com' target='_blank'><button style='background-color: #221db9; color: white; border: none; padding: 4px 16px; border-radius: 20px; cursor: pointer;'>✉ Contact</button></a> </p>
+      <p>&copy; 2025 JDRoy.com</p>
+    </div>
+  </footer>
+  <script>
+    function toggleInfo() {
+  const isMobile = window.innerWidth <= 767;
+  const text = document.getElementById(isMobile ? "hiddenTextMobile" : "hiddenTextDesktop");
+  const rHead = document.querySelector(isMobile ? ".r-head-mob" : ".r-head");
+  const button = rHead.querySelector(".expand-button");
+
+  text.classList.toggle("hidden");
+
+  if (!text.classList.contains("hidden")) {
+    rHead.style.paddingBottom = text.scrollHeight + "px";
+        button.textContent = "Less Info";
+  } else {
+    rHead.style.paddingBottom = "0";
+        button.textContent = "More Info";
+  }
+}
+    
+    /*function toggleInfo() {
+            var text = document.getElementById("hiddenText");
+            text.classList.toggle("hidden");
+        }*/
+
+    // Function to toggle section expansion
+    function toggleSection(button) {
+      const section = button.closest('.section');
+      const isExpanded = section.classList.contains('expanded');
+      section.classList.toggle('expanded');
+      button.textContent = isExpanded ? '+ READ MORE' : '− READ LESS';
+    }
+
+       // Function to set up alternating layouts for a specific project
+       function setupAlternatingLayouts(projectId) {
+         // Remove reverse class from all sections
+         document.querySelectorAll('.section').forEach(section => {
+           section.classList.remove('reverse');
+         });
+         // Apply reverse class to odd-indexed sections (0-based) within the active project
+         const sections = document.querySelectorAll(`#${projectId} .section`);
+         sections.forEach((section, index) => {
+           if (index % 2 === 1) {
+             section.classList.add('reverse');
+           }
+         });
+       }
+
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const isDarkMode = body.classList.toggle('dark-mode');
+      const buttons = document.querySelectorAll('.toggle-button');
+      buttons.forEach(button => {
+        button.textContent = isDarkMode ? 'Light' : 'Dark';
+      });
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+
+    // Function to show selected project
+    function showProject(projectId) {
+  document.querySelectorAll('.project-content').forEach(content => {
+    content.classList.remove('active');
+    content.style.display = 'none';
+  });
+
+  const target = document.querySelector(`.project-content#${projectId}`);
+  /// console.log("Target to activate:", projectId, target);
+  if (target) {
+    target.classList.add('active');
+    target.style.display = 'block';
+  } else {
+    console.warn(`Could not find .project-content#${projectId}`);
+  }
+
+  document.querySelectorAll('.project-nav a').forEach(link => {
+    link.classList.remove('active');
+  });
+  const link = document.querySelector(`.project-nav a[onclick="showProject('${projectId}')"]`);
+  if (link) {
+    link.classList.add('active');
+  }
+
+  setupAlternatingLayouts(projectId);
+}
+
+
+
+    // Initialize dark mode and project view based on localStorage
+    function initializeDarkMode() {
+      const savedDarkMode = localStorage.getItem('darkMode');
+      const body = document.body;
+      const buttons = document.querySelectorAll('.toggle-button');
+
+      if (savedDarkMode === null || savedDarkMode === 'true') {
+        body.classList.add('dark-mode');
+        buttons.forEach(button => button.textContent = 'Light');
+      } else {
+        body.classList.remove('dark-mode');
+        buttons.forEach(button => button.textContent = 'Dark');
+      }
+
+      showProject('project0');
+    }
+
+
+    // Run when the page loads
+    document.addEventListener('DOMContentLoaded', initializeDarkMode);
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create modal elements
+      const modal = document.createElement('div');
+      modal.style.display = 'none';
+      modal.style.position = 'fixed';
+      modal.style.top = '0';
+      modal.style.left = '0';
+      modal.style.width = '100%';
+      modal.style.height = '100%';
+      modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+      modal.style.zIndex = '1000';
+      modal.style.alignItems = 'center';
+      modal.style.justifyContent = 'center';
+
+      const modalImg = document.createElement('img');
+      modalImg.style.maxWidth = '90%';
+      modalImg.style.maxHeight = '90%';
+      modalImg.style.objectFit = 'contain';
+      modal.appendChild(modalImg);
+
+      document.body.appendChild(modal);
+
+      // Add click event to all images
+      document.querySelectorAll('img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+          modal.style.display = 'flex';
+          modalImg.src = img.src;
+        });
+      });
+
+      // Close modal on click
+      modal.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+    });
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93e349cbbaf8b093',t:'MTc0Njk4MzQxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+// Album data
+const albumData = [
+  {
+    id: 1,
+    title: "Nightmares as Extensions of the Waking State",
+    artist: "Katatonia",
+    coverUrl: "https://i.scdn.co/image/ab67616d00001e025666ba36bbb0c8e7976b71fa",
+    releaseYear: "1973",
+    genre: "Progressive Rock",
+    spotifyEmbedUrl: "https://open.spotify.com/embed/album/1HOjUmdJsbyvFZtAB8G7kP?utm_source=generator&theme=0&hide_cover=1&show_playcount=0&size=compact",
+    tracklist: [
+      "<span style='text-decoration: underline; font-weight: bold;'>Katatonia’s Album & Tour Campaigns (2025)</span>",
+      "Collaborate on campaign planning and development*",
+      "Coordinate announcement and release rollouts across DSPs, YouTube, and social channels",
+      "Liaise across stakeholders to ensure timely delivery of assets, press, and content*",
+      "Strengthened internal planning by creating reference documents, monitoring comms, and streamlining workflows",
+      "Acted as liaison between band and PR agency for international press coverage*",
+      "<span style='line-height: 2.5; font-weight: bold;'>#Favourite Track: ‘Temporal’</span>   <a href='https://open.spotify.com/track/3k38K0CjsmtnlAR5fyHmdc?si=aacefa042abe4714' target='_blank'><button class='playbtn'>▶ Play</button></a>",
+      "<span class='asterix'>* performed across campaigns</span>",
+    ]
+  },
+  {
+    id: 2,
+    title: "Ascension",
+    artist: "Paradise Lost",
+    coverUrl: "https://i.scdn.co/image/ab67616d00001e02db562e3556da476f806b133a",
+    releaseYear: "1969",
+    genre: "Rock",
+    spotifyEmbedUrl: "https://open.spotify.com/embed/track/6E4BYC297NbL2cx90DRmId?utm_source=generator&theme=0&hide_cover=1&show_playcount=0&size=compact",
+    tracklist: [
+      "<span style='text-decoration: underline; font-weight: bold;'>Paradise Lost’s Album & Tour Campaigns (2025)</span>",
+      "Collaborate on campaign planning and development*",
+      "Coordinate announcement and release rollouts across DSPs, YouTube, and social channels",
+      "Support content creation for social media and mailing lists*",
+      "Led visa coordination for the 2025 US tour, compiling and verifying all documents and working with legal support to ensure a strong, evidence-backed application",
+      "Developed and delivered a fan-facing giveaway campaign, resulting in an increase in registrations and subscriber engagement ahead of the album rollout*",
+      "Developed a merchandise forecasting template using previous tour data to support stock planning",
+      "<span style='line-height: 2.5; font-weight: bold;'>#Favourite Track: 'Track 3'</span>   <a href='https://open.spotify.com/track/3k38K0CjsmtnlAR5fyHmdc?si=aacefa042abe4714' target='_blank'><button class='playbtn'>▶ Play</button></a>",
+      "<span class='asterix'>* performed across campaigns</span>",
+    ]
+  },
+  {
+    id: 3,
+    title: "The Last Will and Testament",
+    artist: "Opeth",
+    coverUrl: "https://i.scdn.co/image/ab67616d00001e02ece89e60032882668de62154",
+    releaseYear: "1971",
+    genre: "Hard Rock",
+    spotifyEmbedUrl: "https://open.spotify.com/embed/album/1f2Q8urIhVZiuPSiNLcQG6?utm_source=generator&theme=0&hide_cover=1&show_playcount=0&size=compact",
+    tracklist: [
+      "<span style='text-decoration: underline; font-weight: bold;'>Opeth’s Album & Tour Campaigns</span>",
+      "Collaborated on campaign planning and development*",
+      "Review and quality-checked album materials; lyric sheets and inserts, ahead of production*",
+      "Reported on potential campaign tools, assessing functionality and alignment with campaign goals",
+      "Prepared and supported the delivery of playthrough videos and related content for YouTube and socials",
+      "Liaised with equipment endorsement partners to support promotion of video content",
+      "Reviewed and compared terms of a co-branding agreement, preparing notes for internal discussion",
+      "Reinforce activities via mailing list, identifying opportunities to offer exclusive or early access to announcements, content, giveaways, and presales*",
+      "<span style='line-height: 2.5; font-weight: bold;'>#Favourite Track: ‘§5’</span>   <a href='https://open.spotify.com/track/5yptKqG1ej3TCfn0DforbV?si=aacefa042abe4714' target='_blank'><button class='playbtn'>▶ Play</button></a>",
+      "<span class='asterix'>* performed across campaigns</span>",
+    ]
+  },
+  {
+    id: 4,
+    title: "Kleptocracy",
+    artist: "Ferocious Dog",
+    coverUrl: "https://i.scdn.co/image/ab67616d00001e027d63f6e315d70bf565f6450c",
+    releaseYear: "1975",
+    genre: "Rock",
+    spotifyEmbedUrl: "https://open.spotify.com/embed/album/3GEeqRtRemm7JE7bnPep0L?utm_source=generator&theme=0&hide_cover=1&show_playcount=0&size=compact",
+    tracklist: [
+      "<span style='text-decoration: underline; font-weight: bold;'>Ferocious Dog’s Album & Tour Campaigns</span>",
+      "Collaborated on campaign planning and development*",
+      "Produced the social media schedule and supported content creation. Evolved ideas into scripts and worked with the band to produce content",
+      "Sourced and coordinated in-store appearances and signing sessions to support the album release and tour",
+      "Secured additional coverage through regional UK press",
+      "Co-developed a mystery box concept, planned product structure and coordinated promotional activity",
+      "Created an audience profile to guide content strategy",
+      "Recruited and managed a UK-wide street team",
+      "<span style='line-height: 2.5; font-weight: bold;'>#Favourite Track: ‘A Place We Call Home’</span>   <a href='https://open.spotify.com/track/3goeH3pl48VGXMRH6z4ZoH?si=aacefa042abe4714' target='_blank'><button class='playbtn'>▶ Play</button></a>",
+      "<span class='asterix'>* performed across campaigns</span>",
+    ]
+  },
+/*  {
+    id: 5,
+    title: "Undefined",
+    artist: "Undefined",
+    coverUrl: "https://images.pexels.com/photos/3944104/pexels-photo-3944104.jpeg",
+    releaseYear: "1997",
+    genre: "Alternative Rock",
+    spotifyEmbedUrl: "https://open.spotify.com/embed/album/6dVIqQ8qmQ5GBnJ9shOYGE?utm_source=generator&theme=0&hide_cover=1&show_playcount=0&size=compact",
+    tracklist: [
+      "Item1",
+      "Item2",
+      "Item3",
+      "Item4",
+      "Item5",
+    ]
+  }*/
+];
+
+let currentIndex = 0;
+let isPlaying = false;
+let isTransitioning = false;
+
+function calculatePosition(index, currentIndex, total) {
+  const angle = ((index - currentIndex) * (360 / total)) * (Math.PI / 180);
+  const radius = 300;
+  
+  return {
+    x: Math.sin(angle) * radius,
+    z: Math.cos(angle) * radius - radius,
+    opacity: mapRange(Math.cos(angle), -1, 1, 0.25, 1),
+    scale: mapRange(Math.cos(angle), -1, 1, 0.6, 1)
+  };
+}
+
+function mapRange(value, inMin, inMax, outMin, outMax) {
+  return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+
+function updateCarousel() {
+  const carousel = document.getElementById('bandCarousel');
+  const total = albumData.length;
+
+  if (!carousel.children.length) {
+    albumData.forEach((album, index) => {
+      const div = document.createElement('div');
+      div.className = 'carousel-item';
+      div.innerHTML = `<img src="${album.coverUrl}" alt="${album.title} cover">`;
+      div.onclick = () => rotateToIndex(index);
+      carousel.appendChild(div);
+    });
+  }
+
+  Array.from(carousel.children).forEach((item, index) => {
+    if (!item.classList.contains('carousel-item')) return;
+
+    const pos = calculatePosition(index, currentIndex, total);
+    item.style.transform = `
+      translate(-50%, -50%)
+      translateX(${pos.x}px)
+      translateZ(${pos.z}px)
+      scale(${pos.scale})
+    `;
+    item.style.opacity = pos.opacity;
+    item.style.zIndex = Math.round(pos.z);
+
+    item.classList.toggle('focused', index === currentIndex);
+  });
+
+  updateBandInfo();
+  updateAlbumInfo();
+}
+
+function rotateToIndex(targetIndex) {
+  if (isTransitioning || targetIndex === currentIndex) return;
+  
+  isTransitioning = true;
+  const total = albumData.length;
+  let diff = targetIndex - currentIndex;
+  
+  if (Math.abs(diff) > total / 2) {
+    diff -= Math.sign(diff) * total;
+  }
+  
+  currentIndex = ((currentIndex + diff) + total) % total;
+  updateCarousel();
+  
+  setTimeout(() => {
+    isTransitioning = false;
+  }, 850);
+}
+
+function goToNext() {
+  rotateToIndex((currentIndex + 1) % albumData.length);
+}
+
+function goToPrevious() {
+  rotateToIndex((currentIndex - 1 + albumData.length) % albumData.length);
+}
+
+function updateBandInfo() {
+  const album = albumData[currentIndex];
+  const bandInfo = document.getElementById('bandInfo');
+  bandInfo.innerHTML = `
+    <div style="text-align: center; font-size: 1rem;">
+      <h3 style="font-size: 1.5rem; color: var(--amber-500); margin-bottom: 0.5rem;">${album.artist}</h3>
+      <p style="color: #94a3b8; font-weight: 700;">${album.title}</p>
+    </div>
+  `;
+}
+
+
+function updateAlbumInfo() {
+  try {
+    const album = albumData[currentIndex];
+    const spotifyEmbed = document.getElementById('spotifyEmbed');
+    const trackList = document.getElementById('tracklist');
+
+    if (!spotifyEmbed || !trackList) {
+      console.warn('Required elements are missing in the DOM.');
+      return;
+    }
+
+    spotifyEmbed.innerHTML = `
+      <iframe
+        src="${album.spotifyEmbedUrl}?utm_source=generator&theme=0&hide_cover=1&show_playcount=0&size=compact"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allow="encrypted-media"
+        style="border-radius: 0.5rem;"
+        title="${album.title} by ${album.artist} on Spotify">
+      </iframe>
+    `;
+
+//    trackList.innerHTML = album.tracklist?.map((track, index, arr) => {
+//  const isFirst = index === 0;
+//  const isLast = index === arr.length - 1;
+//  const prefix = (!isFirst && !isLast) ? '• ' : '';
+//  return `<p>${prefix}${track}</p>`;
+//}).join('') || '';
+  
+/*      trackList.innerHTML = `
+        <li>${album.tracklist[0]}</li>
+        <div id="moreTracks" style="display: ${isTracklistExpanded ? 'block' : 'none'};">
+          ${album.tracklist.slice(1).map(track => `<li>${track}</li>`).join('')}
+        </div>
+        <button id="readMoreBtn" class="expand-button moreinfo" onclick="toggleTracklist()">
+          ${isTracklistExpanded ? '− READ LESS' : '+ READ MORE'}
+        </button>
+      `;
+*/
+
+/*trackList.innerHTML = `
+  <div style="margin-bottom: 0.5rem;">${album.tracklist[0]}</div>
+  <ul id="moreTracks" style="display: ${isTracklistExpanded ? 'block' : 'none'}; padding-left: 1.2rem;">
+    ${album.tracklist.slice(1).map(track => `<li>${track}</li>`).join('')}
+  </ul>
+  <button id="readMoreBtn" class="expand-button" onclick="toggleTracklist()">
+    ${isTracklistExpanded ? '− READ LESS' : '+ READ MORE'}
+  </button>
+`;*/
+
+/* BEST YET */
+/*const visibleTracks = album.tracklist;
+const first = visibleTracks[0];
+const middle = visibleTracks.slice(1, -2); // all except first & last two
+const lastTwo = visibleTracks.slice(-2);  // last two items
+
+trackList.innerHTML = `
+  <div style="margin-bottom: 0.5rem;">${first}</div>
+  <ul id="moreTracks" style="display: ${isTracklistExpanded ? 'block' : 'none'}; padding-left: 1.2rem; margin-top: 0;">
+    ${middle.map(track => `<li>${track}</li>`).join('')}
+  </ul>
+  <div id="extraTracks" style="display: ${isTracklistExpanded ? 'block' : 'none'}; margin-top: 0.5rem;">
+    ${lastTwo.map(track => `<div style="margin-bottom: 0.5rem;">${track}</div>`).join('')}
+  </div>
+  <button id="readMoreBtn" class="expand-button moreinfo" onclick="toggleTracklist()">
+    ${isTracklistExpanded ? '− READ LESS' : '+ READ MORE'}
+  </button>
+`;*/
+
+const visibleTracks = album.tracklist;
+const first = visibleTracks[0];
+const middle = visibleTracks.slice(1, -2);
+const lastTwo = visibleTracks.slice(-2);
+
+trackList.innerHTML = `
+  <div style="margin-bottom: 0.5rem;">
+    <span>${first}</span>
+    <button id="readMoreBtn" class="expand-button moreinfo" onclick="toggleTracklist()">
+      ${isTracklistExpanded ? '− READ LESS' : '+ READ MORE'}
+    </button>
+  </div>
+  <ul id="moreTracks" style="display: ${isTracklistExpanded ? 'block' : 'none'}; padding-left: 1.2rem; margin-top: 0;">
+    ${middle.map(track => `<li>${track}</li>`).join('')}
+  </ul>
+  <div id="extraTracks" style="display: ${isTracklistExpanded ? 'block' : 'none'}; margin-top: 0.5rem;">
+    ${lastTwo.map(track => `<div style="margin-bottom: 0.5rem;">${track}</div>`).join('')}
+  </div>
+`;
+
+
+
+    // trackList.innerHTML = album.tracklist?.map(track => `<p>${track}</p>`).join('') || '';
+  } catch (err) {
+    console.error("Error in updateAlbumInfo:", err);
+  }
+}
+
+// Initialize carousel
+document.addEventListener('DOMContentLoaded', () => {
+  updateCarousel();
+  updateBandInfo();
+  updateAlbumInfo();
+});
+
+const track = document.querySelector('.ticker-track');
+        const item = track.querySelector('.ticker-item');
+
+        // Clone the item to fill enough space for seamless animation
+        while (track.scrollWidth < window.innerWidth * 20) {
+            const clone = item.cloneNode(true);
+            track.appendChild(clone);
+        }
+
+
+let isTracklistExpanded = false;
+
+function toggleTracklist() {
+  const moreTracks = document.getElementById('moreTracks');
+  const btn = document.getElementById('readMoreBtn');
+  const isHidden = moreTracks.style.display === 'none';
+
+  moreTracks.style.display = isHidden ? 'block' : 'none';
+  btn.textContent = isHidden ? '− READ LESS' : '+ READ MORE';
+
+  isTracklistExpanded = !isTracklistExpanded;
+  updateAlbumInfo(); // re-render current album with new expansion state
+}
+
+
+</script>
+
+</body>
+</html>
